@@ -127,7 +127,7 @@ const getPageNumbers = () => {
               >
                 <div className="left-section thumb">
                   
-                    <img src={hotel.thumbnail || hotel.main_photo || null} alt={hotel.name} width={250} style={{ borderRadius: "8px" }} />
+                    <img src={hotel.thumbnail || hotel.main_photo || undefined} alt={hotel.name} width={250} style={{ borderRadius: "8px" }} />
                   
                 </div>
 
