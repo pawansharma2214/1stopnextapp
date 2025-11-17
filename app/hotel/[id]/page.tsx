@@ -3,6 +3,15 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+ type HotelImage = {
+  url: string;
+  urlHd: string;
+  caption: string;
+  order: number;
+  defaultImage: boolean;
+};
+
+
 export default function HotelDetailPage() {
   const params = useParams();
   const id = params?.id;
@@ -41,35 +50,40 @@ export default function HotelDetailPage() {
   if (loading) return <p>Loading hotel details...</p>;
   if (!hotel) return <p>Hotel not found.</p>; 
 
+ 
+
   return (
     <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "20px" }}>
       <h1>{hotel.name}</h1>
 
       <div className="slider">
-        {hotel.hotelImages.map((img, i) => (
-          <div className="slide" key={i}>
+        {hotel.hotelImages.map((img: HotelImage, index: number) => (
+          <div key={index} className="slide">
             <img src={img.url} alt={img.caption || hotel.name} />
           </div>
         ))}
       </div>
 
       <style jsx>{`
-        .slider {
-          display: flex;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          gap: 10px;
-        }
-        .slide {
-          scroll-snap-align: start;
-          flex: none;
-          width: 300px;
-        }
-        img {
-          width: 100%;
-          border-radius: 8px;
-        }
-      `}</style>
+          .slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 14px;
+            scroll-snap-type: x mandatory;
+            padding: 10px;
+          }
+          .slide {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+          }
+          img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+          }
+        `}</style>
+     
 
       {/* Hotel Description */}
       <div dangerouslySetInnerHTML={{ __html: hotel.hotelDescription }} />
