@@ -166,13 +166,15 @@ const getPageNumbers = () => {
               ) : (
                 <button
                   key={idx}
-                  onClick={() => setPage(num)}
+                  onClick={() => typeof num === "number" && setPage(num)}
                   style={{ fontWeight: num === page ? "bold" : "normal", textDecoration: num === page ? "underline" : "none" }}
                 >
                   {num}
                 </button>
               )
             )}
+
+
 
             <button onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))} disabled={page === totalPages}>Next</button>
             <button onClick={() => setPage(totalPages)} disabled={page === totalPages}>Last</button>
