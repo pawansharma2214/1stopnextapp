@@ -6,6 +6,7 @@ type Hotel = {
   id: string;
   name: string;
   main_photo?: string;
+  thumbnail?: string;
   city?: string;
   country?: string;
   starRating?: number;
@@ -95,6 +96,9 @@ const getPageNumbers = () => {
   return pages;
 };
 
+
+  console.log(hotels);
+  
 
   return (
     <main className="max-w-[1200px] mx-auto p-5" >
