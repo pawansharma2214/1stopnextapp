@@ -25,7 +25,7 @@ export default function HotelsList() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1); // current page
   const [total, setTotal] = useState(0); // total hotels
-  const [hotels, setHotels] = useState<Hotel | null>(null);  
+  const [hotels, setHotels] = useState<Hotel[]>([]);  
 
   const limit = 10;
 
@@ -139,9 +139,8 @@ const getPageNumbers = () => {
                   {hotel.hotelDescription && (
                     <p dangerouslySetInnerHTML={{ __html: hotel.hotelDescription }} />
                   )}
-                  <p>⭐ {hotel.stars || "N/A"} ({hotel.reviewCount || 0} reviews)</p>
-                  <p>{hotel.currency}</p>
-                  {/* - {hotel.price_ranges?.maximum || "N/A" */}
+                  <p>⭐ {hotel?.stars || "N/A"} ({hotel?.reviewCount || 0} reviews)</p>
+                  <p>{hotel?.currency || "N/A"}</p>
 
                   <div style={{ marginTop: "10px" }}>
                     <Link href={`/hotel/${encodeURIComponent(hotel.id)}`} className="hotel-card">
