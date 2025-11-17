@@ -2,12 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
+type Hotel = {
+  id: string;
+  name: string;
+  main_photo?: string;
+  city?: string;
+  country?: string;
+  starRating?: number;
+  hotelDescription?: string;
+  hotelImages?: {
+    url: string;
+    caption?: string;
+    defaultImage?: boolean;
+  }[];
+};
 export default function HotelsList() {
-  const [hotels, setHotels] = useState([]);
+  //const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1); // current page
   const [total, setTotal] = useState(0); // total hotels
+  const [hotels, setHotels] = useState<Hotel[]>([]);
 
   const limit = 10;
 
@@ -97,8 +111,7 @@ const getPageNumbers = () => {
           <div className="grid gap-8">
             {hotels.map((hotel) => (
               <div
-                key={hotel.id}
-                className="flex gap-5 p-4 border rounded-lg"
+                key={hotel.id}                 
                 style={{
                   display: "flex",
                   gap: "20px",
