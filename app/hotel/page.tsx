@@ -9,6 +9,7 @@ type Hotel = {
   thumbnail?: string;
   city?: string;
   country?: string;
+  currency?: string;
   starRating?: number;
   stars?: number;  
   reviewCount?: number;  
@@ -24,7 +25,7 @@ export default function HotelsList() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1); // current page
   const [total, setTotal] = useState(0); // total hotels
-  const [hotels, setHotels] = useState<Hotel[]>([]);
+  const [hotels, setHotels] = useState<Hotel | null>(null);  
 
   const limit = 10;
 
