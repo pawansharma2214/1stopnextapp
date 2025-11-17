@@ -10,6 +10,8 @@ type Hotel = {
   city?: string;
   country?: string;
   starRating?: number;
+  stars?: number;  
+  reviewCount?: number;  
   hotelDescription?: string;
   hotelImages?: {
     url: string;
@@ -146,15 +148,7 @@ const getPageNumbers = () => {
                         View details →
                       </span>
                     </Link>
-                  </div>
-
-                  {hotel.url && (
-                    <p style={{ marginTop: "10px" }}>
-                      <a href={hotel.url} target="_blank" rel="noopener noreferrer">
-                        View on TripAdvisor
-                      </a>
-                    </p>
-                  )}
+                  </div> 
                 </div>
               </div>
             ))}
